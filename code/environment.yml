@@ -1,0 +1,5 @@
+name: RescienceGeoffroy
+dependencies:
+  - python = 3.7.4
+  - numpy = 1.17.2
+  - matplotlib = 3.1.1

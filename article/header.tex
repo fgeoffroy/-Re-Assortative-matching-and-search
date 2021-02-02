@@ -1,0 +1,105 @@
+%% ----------------------------------------------------------------------------
+%% ReScience article template
+%% Copyright (c) 2018 N.P. Rougier,
+%% Released under a Creative Commons Attribution 4.0 International license.
+%% ----------------------------------------------------------------------------
+
+%% --- Macros ------------------------------------------------------------------
+\newtcolorbox{rebox}
+   {colback=blue!5!white, colframe=blue!40!white,
+     boxrule=0.5pt, arc=2pt, fonttitle=\sffamily\scshape\bfseries,
+     left=6pt, right=20pt, top=6pt, bottom=6pt}
+
+%% --- Top left header --------------------------------------------------------
+\begin{tikzpicture}[remember picture, overlay]
+  \node [shape=rectangle, draw=darkred, fill=darkred, yshift=-34mm,
+        anchor=north west, minimum width=3.75cm, minimum height=10mm]
+        at (current page.north west) {};
+  \node [text=white, anchor=center, yshift=-39mm, xshift=1.875cm]
+         at (current page.north west) {\small \SpaceRoboto RESCIENCE C};
+\end{tikzpicture}
+
+
+%% --- Title -------------------------------------------------------------------
+{\let\newpage\relax\maketitle} \maketitle
+
+
+%% --- Margin information -----------------------------------------------------
+\marginnote{
+  \footnotesize \sffamily
+  \textbf{Edited by}\\
+  \ifdefempty{\editorNAME}{\textcolor{darkgray}{(Editor)}}
+             {\editorNAME\ifdefempty{\editorORCID}{}{$^{\orcid{\editorORCID}}$}}\\
+  ~\\
+  %%
+  \ifdefempty{\reviewerINAME}{}
+  {
+  \textbf{Reviewed by}\\
+  \ifdefempty{\reviewerINAME}{\textcolor{darkgray}{}}
+             {\reviewerINAME\ifdefempty{\reviewerIORCID}{}{$^{\orcid{\reviewerIORCID}}$}\\}
+  \ifdefempty{\reviewerIINAME}{\textcolor{darkgray}{}}
+             {\reviewerIINAME\ifdefempty{\reviewerIIORCID}{}{$^{\orcid{\reviewerIIORCID}}$}\\}
+  ~\\
+  }
+  %%           
+  \textbf{Received}\\
+  \ifdefempty{\dateRECEIVED}{---}{\dateRECEIVED}\\
+  ~\\
+  %%
+  \textbf{Published}\\
+  \ifdefempty{\datePUBLISHED}{---}{\datePUBLISHED}\\
+  ~\\
+  %%
+  \textbf{DOI}\\
+  \ifdefempty{\articleDOI}{---}{\articleDOI}
+}
+ 
+
+%% --- Bottom statement -------------------------------------------------------
+\newcommand{\container}[1]{\def\@container{#1}}
+\begin{container}
+  \afterpage {
+    \begin{statement}
+      \scriptsize \sffamily
+      \hrule \vskip .5em
+      Copyright © \articleYEAR~\authorsABBRV,
+      released under a Creative Commons Attribution 4.0 International license.
+      
+      Correspondence should be addressed to
+      \contactNAME~(\href{mailto:\contactEMAIL}{\contactEMAIL})
+  
+      The authors have declared that no competing interests exists.
+
+      \ifdefempty{\codeURL}{}
+      {Code is available at
+      \href{\codeURL}{\detokenize\expandafter{\codeURL}}\ifdefempty{\codeDOI}{.}{ -- DOI \doi{\codeDOI}.}\ifdefempty{\codeSWH}{.}{ -- SWH  \href{https://archive.softwareheritage.org/\codeSWH/}{\detokenize\expandafter{\codeSWH}}.}}
+
+      \ifdefempty{\dataURL}{}
+      {Data is available at
+      \href{\dataURL}{\detokenize\expandafter{\dataURL}}\ifdefempty{\dataDOI}{.}{ -- DOI \doi{\dataDOI}.}}
+
+      \ifdefempty{\reviewURL}{}
+     {Open peer review is available at \href{\reviewURL}{\detokenize\expandafter{\reviewURL}}.}
+    \end{statement}
+  }
+\end{container}
+
+
+%% --- Abstract ---------------------------------------------------------------
+%% \ifdefempty{\articleABSTRACT}{}{
+%%   {\small \sffamily \textbf{Abstract} \articleABSTRACT \par}
+%% }
+
+
+%% --- Replication ------------------------------------------------------------
+\begin{rebox}
+\sffamily {\bfseries A reference implementation of}
+\small
+\begin{flushleft}
+\begin{itemize}
+	\renewcommand{\labelitemi}{$\rightarrow$}
+    \item {\href{\replicationURL}{\small \sffamily \replicationCITE}} {\href{http://doi.org/\replicationDOI}{\small \sffamily http://doi.org/\replicationDOI}}
+    \item {\href{https://www.ssc.wisc.edu/~lones/wp-content/uploads/2016/12/marriage-JPE.pdf}{\small \sffamily Smith, L. (2006). The Marriage Model with Search Frictions. J. Political Econ., 114(6), 1124–1144.}} {\href{https://doi.org/10.1086/510440}{\small \sffamily https://doi.org/10.1086/510440}}
+  \end{itemize}\par
+\end{flushleft}
+\end{rebox}
