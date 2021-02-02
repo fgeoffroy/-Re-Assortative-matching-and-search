@@ -2,9 +2,6 @@ import math
 from run_TU import find_equilibrium_TU
 from run_NTU import find_equilibrium_NTU
 
-import timeit
-start = timeit.default_timer()
-
 
 # TRANSFERABLE UTILITY (TU)
 
@@ -123,8 +120,3 @@ for sigma in sigmaList:
         figName = "fig4_" + str(i) + ".pdf"
         find_equilibrium_TU(n, delta, rho, r, production_function, figName, "normal", mu, sigma)
         i += 1
-
-
-
-stop = timeit.default_timer()
-print('Time: ', stop - start)
