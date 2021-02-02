@@ -39,9 +39,10 @@ def find_equilibrium_TU(n, delta, rho, r, production_function, figName, distribu
     listAllAlphas = [alphas.tolist()]
     keepIterating = True
 
+    # Main loop
     while keepIterating:
 
-        # Updating the unemployment density
+        # Updating the unemployment density. Equation (1)
         # """ Fixed point algorithm """
         tol = 1e-12
         e = 1
@@ -51,18 +52,19 @@ def find_equilibrium_TU(n, delta, rho, r, production_function, figName, distribu
             e = np.linalg.norm(uPrev - uDensity)
             uPrev = uDensity
 
-        # Updating the values
+        # Updating the values. Equation (2a)
         P = alphas * uDensity + np.identity(n) * ((n / theta) + np.dot(alphas, uDensity))
         q = np.dot(alphas * payoffs, uDensity)
         values = np.dot(np.linalg.inv(P), q)
 
 
-        # Updating the matching set
+        # Updating the matching set. Equation (3a)
         newAlphas = np.zeros([n,n])
         for i in range(n):
             for j in range(n):
                 if payoffs[i,j] >= values[i] + values[j]:
                     newAlphas[i,j] = 1
+        # Printing the number of changes in the matrix alphas after update
         print(n**2 - (newAlphas == alphas).sum())
 
         # Checking if convergence, or infinite loop

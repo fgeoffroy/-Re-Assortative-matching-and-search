@@ -38,9 +38,10 @@ def find_equilibrium_NTU(n, delta, rho, r, production_function, figName, distrib
     listAllAlphas = [alphas.tolist()]
     keepIterating = True
 
+    # Main loop
     while keepIterating:
 
-        # Updating the unemployment density
+        # Updating the unemployment density. Equation (1)
         # """ Fixed point algorithm """
         tol = 1e-12
         e = 1
@@ -50,15 +51,16 @@ def find_equilibrium_NTU(n, delta, rho, r, production_function, figName, distrib
             e = np.linalg.norm(uPrev - uDensity)
             uPrev = uDensity
 
-        # Updating the values
+        # Updating the values. Equation (2b)
         values = (np.dot(alphas * payoffs, uDensity) ) / (n * psy + (np.dot(alphas, uDensity) ))
 
-        # Updating the matching set
+        # Updating the matching set. Equation (3b)
         newAlphas = np.zeros([n,n])
         for i in range(n):
             for j in range(n):
                 if payoffs[i,j] >= values[i] and payoffs[j,i] >= values[j]:
                     newAlphas[i,j] = 1
+        # Printing the number of changes in the matrix alphas after update
         print(n**2 - (newAlphas == alphas).sum())
 
         # Checking if convergence, or infinite loop
@@ -152,7 +154,7 @@ def plot_matching_set(alphas, n, figName, distribution, contributions, lDensity)
 
 
 if __name__ == '__main__':
-    # If run_TU.py is run independently, a simulation is run with the following parameters
+    # If run_NTU.py is run independently, a simulation is run with the following parameters
     n = 500
     delta = 0.1
     rho = 30
