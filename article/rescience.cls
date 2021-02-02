@@ -38,7 +38,12 @@
 
 
 
-% --- Footnotes -------------------------------------------------------------
+% --- Line numbering ----------------------------------------------------------
+\RequirePackage{lineno}
+\linenumbers
+
+
+% --- Footnotes ---------------------------------------------------------------
 \renewcommand{\thefootnote}{\alph{footnote}}	%Modification here
 
 
