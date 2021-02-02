@@ -1,10 +1,18 @@
 # [Re] Assortative matching and search
 
 
+## Replication of Shimer & Smith (2000) and Smith (2006)
+
+
+This project attempts to replicate results from Shimer & Smith (2000) and Smith (2006) in Python. The full references to the original articles are:
+
+> Shimer, R., and Smith, L. (2000). Assortative matching and search. Econometrica, 68(2), 343–369. http://doi.org/10.1111/1468-0262.00112
+
+> Smith, L. (2006). The Marriage Model with Search Frictions. J. Political Econ., 114(6), 1124–1144. https://doi.org/10.1086/510440
 
 ## Running the code: quick guide
 
-To create a new environment with all necessary packages called RescienceGeoffroy, in a terminal and in the *code* directory type (this requires Anaconda, does not work with Miniconda)
+To create a new environment with all necessary packages called RescienceGeoffroy, in a terminal and in the `code/` directory type (this requires Anaconda, does not work with Miniconda)
 
 ```bash
 $ conda update conda
@@ -17,7 +25,7 @@ Activate the environment with
 $ conda activate RescienceGeoffroy
 ```
 
-Create all figures in the article, which should take ca. 30sec. The figures are saved in article/figures for easy comparison with the figures in the text.
+Create all figures in the article, which should take ca. 30sec. The figures are saved in the `figures/` subdirectory.
 
 ```bash
 $ python main.py
@@ -52,3 +60,8 @@ Usage: python run_TU.py (ca. 2sec)
 
 **run_NTU.py** : is called by main.py to create figures with *non-transferable utility*. If run independently, a simulation with is be computed with parameters defined at the bottom of the script.
 Usage: python run_NTU.py (ca. 2sec)
+
+
+## Article reproduction
+
+The article uses the [ReScience C](https://rescience.github.io/) journal template. All elements are in the `article/` subfolder. Instructions to reproduce the article are provided in the subfolder [README](article/README.md).
