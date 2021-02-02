@@ -15,7 +15,7 @@ The reproduction was partially successful and has been submitted to [ReScience C
 
 ## Running the code: quick guide
 
-To create a new environment with all necessary packages called RescienceGeoffroy, in a terminal and in the `code/` directory type (this requires Anaconda, does not work with Miniconda)
+To create a new environment with all necessary packages called RescienceGeoffroy, in a terminal and in the `code/` subfolder type (this requires Anaconda, does not work with Miniconda)
 
 ```bash
 $ conda update conda
@@ -28,7 +28,7 @@ Activate the environment with
 $ conda activate RescienceGeoffroy
 ```
 
-Create all figures in the article, which should take ca. 30sec. The figures are saved in the `figures/` subdirectory.
+Create all figures in the article, which should take ca. 30sec. The figures are saved in the `figures/` subfolder.
 
 ```bash
 $ python main.py
