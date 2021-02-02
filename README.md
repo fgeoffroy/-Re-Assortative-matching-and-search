@@ -10,6 +10,9 @@ This project attempts to replicate results from Shimer & Smith (2000) and Smith 
 
 > Smith, L. (2006). The Marriage Model with Search Frictions. J. Political Econ., 114(6), 1124–1144. https://doi.org/10.1086/510440
 
+The reproduction was partially successful and has been submitted to [ReScience C](https://rescience.github.io/).
+
+
 ## Running the code: quick guide
 
 To create a new environment with all necessary packages called RescienceGeoffroy, in a terminal and in the `code/` directory type (this requires Anaconda, does not work with Miniconda)
