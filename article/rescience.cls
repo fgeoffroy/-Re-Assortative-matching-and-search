@@ -38,6 +38,9 @@
 
 
 
+% --- Footnotes -------------------------------------------------------------
+\renewcommand{\thefootnote}{\alph{footnote}}	%Modification here
+
 
 % --- Mathematics -------------------------------------------------------------
 \RequirePackage{amsmath}
