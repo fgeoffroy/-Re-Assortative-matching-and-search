@@ -5,7 +5,6 @@ from matplotlib.ticker import FormatStrFormatter
 import sys
 
 
-
 def find_equilibrium_TU(n, delta, rho, r, production_function, figName, distribution="uniform", mu=0.5, sigma=0.1):
     # market fluidity parameter
     theta = rho / (2 * (r + delta))
@@ -16,9 +15,11 @@ def find_equilibrium_TU(n, delta, rho, r, production_function, figName, distribu
         lDensity = 1
     elif distribution == "normal":
         # Normal distribution
-        lDensity = np.exp(- ((contributions - mu) ** 2) / (2 * sigma ** 2) ) / (sigma * math.sqrt(2 * math.pi))
+        lDensity = np.exp(- ((contributions - mu) ** 2) / (2 * sigma ** 2)) / \
+            (sigma * math.sqrt(2 * math.pi))
         # Truncated between 0 and 1
-        lDensity /= (math.erf((1 - mu) / (sigma * math.sqrt(2))) - math.erf((- mu) / (sigma * math.sqrt(2)))) / 2
+        lDensity /= (math.erf((1 - mu) / (sigma * math.sqrt(2))) -
+                     math.erf((- mu) / (sigma * math.sqrt(2)))) / 2
     else:
         sys.exit("Warning: The distribution of type should be 'uniform' or 'normal'")
 
@@ -33,8 +34,7 @@ def find_equilibrium_TU(n, delta, rho, r, production_function, figName, distribu
         x = contributions[i]
         for j in range(n):
             y = contributions[j]
-            payoffs[i,j] = production_function(x, y)
-
+            payoffs[i, j] = production_function(x, y)
 
     listAllAlphas = [alphas.tolist()]
     keepIterating = True
@@ -48,7 +48,8 @@ def find_equilibrium_TU(n, delta, rho, r, production_function, figName, distribu
         e = 1
         uPrev = uDensity
         while(e > tol):
-            uDensity = delta * lDensity / (delta + rho * np.dot(alphas, uPrev) / n)  # fixed point iteration
+            uDensity = delta * lDensity / \
+                (delta + rho * np.dot(alphas, uPrev) / n)  # fixed point iteration
             e = np.linalg.norm(uPrev - uDensity)
             uPrev = uDensity
 
@@ -57,13 +58,12 @@ def find_equilibrium_TU(n, delta, rho, r, production_function, figName, distribu
         q = np.dot(alphas * payoffs, uDensity)
         values = np.dot(np.linalg.inv(P), q)
 
-
         # Updating the matching set. Equation (3a)
-        newAlphas = np.zeros([n,n])
+        newAlphas = np.zeros([n, n])
         for i in range(n):
             for j in range(n):
-                if payoffs[i,j] >= values[i] + values[j]:
-                    newAlphas[i,j] = 1
+                if payoffs[i, j] >= values[i] + values[j]:
+                    newAlphas[i, j] = 1
         # Printing the number of changes in the matrix alphas after update
         print(n**2 - (newAlphas == alphas).sum())
 
@@ -85,14 +85,6 @@ def find_equilibrium_TU(n, delta, rho, r, production_function, figName, distribu
         print("Infinite loop. Algorithm fails to converge.\n")
 
 
-
-
-
-
-
-
-
-
 def plot_matching_set(alphas, n, figName, distribution, contributions, lDensity):
     colorMatching = "Blues"
     X = np.linspace(1/n/2, 1-1/n/2, n)
@@ -102,7 +94,6 @@ def plot_matching_set(alphas, n, figName, distribution, contributions, lDensity)
     plt.rc('axes', labelsize=40)
     plt.rc('xtick', labelsize=30)
     plt.rc('ytick', labelsize=30)
-
 
     if distribution == "uniform":
         plt.contour(X, Y, alphas, levels, colors='k')
@@ -137,9 +128,9 @@ def plot_matching_set(alphas, n, figName, distribution, contributions, lDensity)
         axHistx.axis('off')
         axHisty.axis('off')
         axHistx.plot(contributions, lDensity)
-        axHistx.fill_between(contributions, 0, lDensity, alpha = 0.2)
+        axHistx.fill_between(contributions, 0, lDensity, alpha=0.2)
         axHisty.plot(lDensity, contributions)
-        axHisty.fill_betweenx(contributions, 0, lDensity, alpha = 0.2)
+        axHisty.fill_betweenx(contributions, 0, lDensity, alpha=0.2)
         axHistx.set_xlim((0, 1))
         axHisty.set_ylim((0, 1))
         axSet.set_xlim((0, 1))
@@ -153,11 +144,8 @@ def plot_matching_set(alphas, n, figName, distribution, contributions, lDensity)
         axSet.set_xlabel('x')
         axSet.set_ylabel('y')
 
-    plt.savefig("../figures/" + figName, bbox_inches='tight', pad_inches=0)
+    plt.savefig("./figures/" + figName, bbox_inches='tight', pad_inches=0)
     plt.close()
-
-
-
 
 
 if __name__ == '__main__':
@@ -166,7 +154,7 @@ if __name__ == '__main__':
     delta = 1
     rho = 100
     r = 1
-    production_function = lambda x,y : x * y
+    def production_function(x, y): return x * y
     # Here choose a name for the figure
     figName = "matching_set_TU.pdf"
     find_equilibrium_TU(n, delta, rho, r, production_function, figName, "normal", 0.5, 0.1)

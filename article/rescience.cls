@@ -29,7 +29,7 @@
 \RequirePackage{marginnote}
 \RequirePackage{csquotes}
 \RequirePackage{graphicx}					%Modification here
-\graphicspath{{../figures/}}					%Modification here
+\graphicspath{{./figures/}}					%Modification here
 \RequirePackage[overload]{empheq}			%Modification here
 \RequirePackage[usestackEOL]{stackengine}	%Modification here
 \RequirePackage{bm}							%Modification here

@@ -1,6 +1,6 @@
 \section*{Introduction}
 
-Understanding markets is one of the major issues in game theory. It has implications in human economical markets \citep{osborne_bargaining_1990,chade_sorting_2017}, as well as in biological markets \citep{noe_biological_1995,hammerstein_biological_2016,fruteau_supply_2009,baumard_mutualistic_2013}. Search-and-matching models have a very important place in the market literature. The general principle is as follows: individuals meet two by two and may decide to interact for a certain period of time and generate benefits. These models are widely used to try to predict a fundamental property of markets: who interacts with whom. This question is also called the \textit{matching problem}.
+Understanding markets is one of the major issues in game theory. It has implications in human economical markets \citep{osborne_bargaining_1990,chade_sorting_2017}, as well as in biological markets \citep{noe_biological_1995,hammerstein_biological_2016,fruteau_supply_2009,baumard_mutualistic_2013}. Search-and-matching models have a very important place in the market literature. The general principle is as follows: individuals meet two by two and may decide to interact for a certain period of time and generate benefits. These models are widely used to try to predict a fundamental property of markets: who interacts with whom. This question is also called the \textit{matching problem}. Historically, the search-and-matching itterature is a merger of Becker's matching theory \citep{becker_theory_1973} and search theory \citep{stigler_economics_1961,rogerson_search-theoretic_2005}.
 
 Shimer and Smith have written two seminal articles \citep{shimer_assortative_2000,smith_marriage_2006} in this field, in which they (1) assume that individuals vary in their ability to generate benefits and (2) study who interacts with whom when everyone plays the equilibrium strategy. More precisely, they derive the conditions for which more productive individuals interact with other productive individuals. This situation is also called a Positive Assortative Matching (PAM).
 
@@ -35,7 +35,7 @@ Shimer and Smith derive a system of three equations which defines a Nash equilib
 	\end{cases}
 	&&\forall x,y \in [0,1]^2 
 \end{align*}
-with $\theta = \frac{\rho}{2(r+\delta)}$ 
+with $\theta = \frac{\rho}{2(r+\delta)}$.
 
 
 Unfortunately, it is not possible to derive a closed-form analytical solution. The trick used by Shimer and Smith \citep{shimer_assortative_2000} to get a numerical approximation is to discretize the type space in $n$ types. The problem can then be written in terms of vectors and matrices. Integrals can be approximated by Riemman sums if $n$ is large enough.
@@ -67,7 +67,7 @@ Because we implement the algorithm with the Numpy library, it is convenient to w
 \end{align}
  
 Here, the symbol $\circ$ denotes the Hadamard product (element-wise product) and the fraction symbol is used in the sense of Hadamard division (element-wise division).
-$\vect{I}_i$ is the identity matrix of size $i$ and $\vect{J}_{i,j}$ is the all-ones matrix of dimensions $i \times j$ ($\vect{J}_{i}$ denotes the square all-ones matrix of dimensions $i \times i$).
+$\vect{I}_i$ is the identity matrix of size $i$ and $\vect{J}_{i,j}$ is the all-one matrix of dimensions $i \times j$ ($\vect{J}_{i}$ denotes the square all-one matrix of dimensions $i \times i$).
 
 
 In the second reference article \citep{smith_marriage_2006}, utility is non-transferable (NTU): an individual in a pair receives a payoff $f(x,y)$ which depends on her type $x$ and her partner's type $y$. Accordingly, her partner receives a payoff $f(y,x)$. The Nash equilibrium, in this case, is determined by
@@ -116,7 +116,7 @@ Although there is no formal proof that this algorithm converges to the desired e
 
 Equation $(1)$ is actually a system of nonlinear equations. We use a simple fixed-point iteration to obtain a numerical solution with an accuracy of $10^{-12}$ (section 2.10 in \citep{atkinson_introduction_1989}). In the algorithm used in the first reference article \citep{shimer_assortative_2000} communicated by the authors, the system is also solved with a fixed-point iteration with an additional damping factor and the same accuracy.
 
-Shimer and Smith \citep{shimer_assortative_2000} also use a fixed-point iteration for solving $(2a)$. In our implementation, we can take advantage of the fact that $(2a)$ is a system of linear equations and can be written as $\vect{P} \vect{v} = \vect{q}$, with $\vect{P} = \vect{A} \diag(\vect{u}) + \vect{I}_n \circ \left(\frac{n}{\theta} \vect{J}_n + \vect{A} \vect{u}\right)$ and $\vect{q} = (\vect{F} \circ \vect{A}) \vect{u}$. The vector of values $\vect{v}$ is $ \vect{v} = \vect{P}^{-1} \vect{q} $
+Shimer and Smith \citep{shimer_assortative_2000} also use a fixed-point iteration for solving $(2a)$. In our implementation, we can take advantage of the fact that $(2a)$ is a system of linear equations and can be written as $\vect{P} \vect{v} = \vect{q}$, with $\vect{P} = \vect{A} \diag(\vect{u}) + \vect{I}_n \circ \left(\frac{n}{\theta} \vect{J}_n + \vect{A} \vect{u}\right)$ and $\vect{q} = (\vect{F} \circ \vect{A}) \vect{u}$. The vector of values $\vect{v}$ is $ \vect{v} = \vect{P}^{-1} \vect{q} $.
 
 Finally, equations $(2b)$, $(3a)$ and $(3b)$ are straightforward to solve.
 
@@ -128,7 +128,7 @@ The algorithm is implemented in Python.
 
 \section*{Results}
 
-We were able to replicate almost all results from both reference articles \citep{shimer_assortative_2000,smith_marriage_2006}. Figures \ref{fig:fig1} and \ref{fig:fig2} replicate results from \citep{shimer_assortative_2000} (transferable utility) and Figure \ref{fig:fig3} replicate results from \citep{smith_marriage_2006} (non-transferable utility).
+We were able to replicate almost all results from both reference articles \citep{shimer_assortative_2000,smith_marriage_2006}. Figures \ref{fig:fig1} and \ref{fig:fig2} replicate results from \citep{shimer_assortative_2000} (transferable utility) and Figure \ref{fig:fig3} replicates results from \citep{smith_marriage_2006} (non-transferable utility).
 
 \subsection*{Shimer \& Smith 2000}
 
@@ -142,7 +142,7 @@ Figure \ref{fig:fig2}A, \ref{fig:fig2}B and \ref{fig:fig2}C respectively replica
 
 Figure \ref{fig:fig3}A and \ref{fig:fig3}B are two attempts at replicating figure 1 from the second reference article \citep{smith_marriage_2006}. When we run our algorithm with the parameters provided in the figure caption in \citep{smith_marriage_2006}, replication fails (Fig.~\ref{fig:fig3}A). By comparing Figure \ref{fig:fig3}A and figure 1 from \citep{smith_marriage_2006}, one can see that the resulting matching sets are qualitatively different. We do not have access to the code which has been used in this article because it has been lost (L. Smith, personal communication). Thus, it is not possible to know where the discrepancy between the results comes from. Nevertheless, we would like propose an explanation for this discrepancy. Please note that \textbf{this is entirely speculative, since there is no way to run the exact algorithm} used in \citep{smith_marriage_2006}. The caption of figure 1 in \citep{smith_marriage_2006} specifies that the author used ``$\delta=.1$'', which usually means ``$0.1$''. Still, this notation is not used for the parameter ``$r=0.3$''. We think that there might be a typo in ``$\delta=.1$''\footnote{Note that a slightly different version of the second reference article \citep{smith_marriage_2006} was previously published in the \textit{Social Science Research Network} in 1997 \citep{smith_marriage_1997}. However, the parameter values given in the figure caption are identical.}. We run the algorithm for $\delta=1.1$ and the resulting figure (Fig.~\ref{fig:fig3}B) seems to replicate figure 1 from \citep{smith_marriage_2006}.
 
-In Figure \ref{fig:fig3}C, were able to replicate figure 2 of \citep{smith_marriage_2006}. However, in \citep{smith_marriage_2006}, the caption below figure 2 states that ``the parameters in fig.~1 are assumed, except $\rho=3$''. We therefore use $\delta=0.1$;, which leads to a good replicate of figure 2 from \citep{smith_marriage_2006}. Changing $\delta$ to $1.1$, as we did for the previous figure, would lead to a replication failure (results not shown).
+In Figure \ref{fig:fig3}C, were able to replicate figure 2 of \citep{smith_marriage_2006}. However, in \citep{smith_marriage_2006}, the caption below figure 2 states that ``the parameters in fig.~1 are assumed, except $\rho=3$''. We therefore use $\delta=0.1$, which leads to a good replicate of figure 2 from \citep{smith_marriage_2006}. Changing $\delta$ to $1.1$, as we did for the previous figure, would lead to a replication failure (results not shown).
 
 
 \subsection*{Gaussian distribution}
@@ -173,7 +173,7 @@ In both reference articles, the distribution of types is always assumed to be un
 	\subfloat[]{\includegraphics[scale=\mediumScl]{fig2_2.pdf}}\\
 	\subfloat[]{\includegraphics[scale=\mediumScl]{fig2_3.pdf}}\quad
 	\subfloat[]{\includegraphics[scale=\mediumScl]{fig2_4.pdf}}
-	\caption{Matching set at the equilibrium for transferable utility. \textbf{(A), (B)} and \textbf{(C)} respectively replicate figures 3a, 3b and figure 4 from the first reference article \citep{shimer_assortative_2000} \textbf{(D)} replicates figure 4 from \citep{smith_frictional_2011}. Parameters are \textbf{(A)} $\delta=1 \ ; \ \rho=100 \ ; \ r=1 \ ; \ f(x,y)=(x+y-1)^2$. \textbf{(B)} $\delta=1 \ ; \ \rho=35 \ ; \ r=1 \ ; \ f(x,y)=(x+y)^2 \ ; \ n=501$. \textbf{(C)} $\delta=1 \ ; \ \rho=750 \ ; \ r=1 \ ; \ f(x,y)=x+y+xy$. \textbf{(D)} $\delta=0.5 \ ; \ \rho=50 \ ; \ r=1 \ ; \ f(x,y)=x+y+xy$}
+	\caption{Matching set at the equilibrium for transferable utility. \textbf{(A)}, \textbf{(B)} and \textbf{(C)} respectively replicate figures 3a, 3b and figure 4 from the first reference article \citep{shimer_assortative_2000}, and \textbf{(D)} replicates figure 4 from \citep{smith_frictional_2011}. Parameters are \textbf{(A)} $\delta=1 \ ; \ \rho=100 \ ; \ r=1 \ ; \ f(x,y)=(x+y-1)^2$. \textbf{(B)} $\delta=1 \ ; \ \rho=35 \ ; \ r=1 \ ; \ f(x,y)=(x+y)^2 \ ; \ n=501$. \textbf{(C)} $\delta=1 \ ; \ \rho=750 \ ; \ r=1 \ ; \ f(x,y)=x+y+xy$. \textbf{(D)} $\delta=0.5 \ ; \ \rho=50 \ ; \ r=1 \ ; \ f(x,y)=x+y+xy$}
 	\label{fig:fig2}
 \end{figure}
 
@@ -216,8 +216,10 @@ In both reference articles, the distribution of types is always assumed to be un
 
 
 \section*{Conclusion}
-All the figures in the first reference article \citep{shimer_assortative_2000} have been successfully replicated (Fig.~\ref{fig:fig1} and \ref{fig:fig2}). Only one of the two figures in the second article \citep{smith_marriage_2006} has been replicated (Fig.~\ref{fig:fig3}A and \ref{fig:fig3}B). We have explored the possibility that our replication failure comes from an error in a parameter value given in a figure caption, yet, this is really uncertain, given that the same parameter value leads to a replication success for the second figure (Fig.~\ref{fig:fig3}C). We are unable to provide a clear explanation for this, since the code has been lost. This shows how important the archiving and replicating processes are, even for computational works. Finally, we have extended the algorithm to include additional assumptions about the distribution of types (Fig.~\ref{fig:fig4}) to match the current use of this algorithm in the search-and-matching literature. We hope this replication can help clarify the methods used in two papers of great importance, and that it can promote future research in the domain.
+All the figures in the first reference article \citep{shimer_assortative_2000} have been successfully replicated (Fig.~\ref{fig:fig1} and \ref{fig:fig2}). Only one of the two figures in the second article \citep{smith_marriage_2006} has been replicated (Fig.~\ref{fig:fig3}A and \ref{fig:fig3}B). We have explored the possibility that our replication failure comes from an error in a parameter value given in a figure caption, yet, this is really uncertain, given that the same parameter value leads to a replication success for the second figure (Fig.~\ref{fig:fig3}C). We are unable to provide a clear explanation for this, since the code has been lost. This shows how important the archiving and replicating processes are, even for computational works. Finally, we have extended the algorithm to include additional assumptions about the distribution of types (Fig.~\ref{fig:fig4}) to match the current use of this algorithm in the search-and-matching literature. We hope this replication can help clarify the method used in two papers of great importance, and that it can promote future research in the domain.
 
 
 \section*{Acknowledgements}
 We would like to thank Robert Shimer and Lones Smith for providing the script of one of the articles, and for useful information.
+
+We also thank Dirk Eddelbuettel who reviewed this article and provided an {\hypersetup{urlcolor=blue}\href{https://github.com/fgeoffroy/-Re-Assortative-matching-and-search/blob/main/README.md}{R script}} for performing a visual comparison between the output of the Python script and the figures in this article.

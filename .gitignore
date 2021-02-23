@@ -40,3 +40,11 @@ __pycache__/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+
+
+# R #
+############
+.Rhistory
+.Rapp.history
+.RData

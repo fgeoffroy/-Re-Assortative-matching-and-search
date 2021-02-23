@@ -15,9 +15,11 @@ def find_equilibrium_NTU(n, delta, rho, r, production_function, figName, distrib
         lDensity = 1
     elif distribution == "normal":
         # Normal distribution
-        lDensity = np.exp(- ((contributions - mu) ** 2) / (2 * sigma ** 2) ) / (sigma * math.sqrt(2 * math.pi))
+        lDensity = np.exp(- ((contributions - mu) ** 2) / (2 * sigma ** 2)) / \
+            (sigma * math.sqrt(2 * math.pi))
         # Truncated between 0 and 1
-        lDensity /= (math.erf((1 - mu) / (sigma * math.sqrt(2))) - math.erf((- mu) / (sigma * math.sqrt(2)))) / 2
+        lDensity /= (math.erf((1 - mu) / (sigma * math.sqrt(2))) -
+                     math.erf((- mu) / (sigma * math.sqrt(2)))) / 2
     else:
         sys.exit("Warning: The distribution of type should be 'uniform' or 'normal'")
 
@@ -32,8 +34,7 @@ def find_equilibrium_NTU(n, delta, rho, r, production_function, figName, distrib
         x = contributions[i]
         for j in range(n):
             y = contributions[j]
-            payoffs[i,j] = production_function(x, y)
-
+            payoffs[i, j] = production_function(x, y)
 
     listAllAlphas = [alphas.tolist()]
     keepIterating = True
@@ -47,19 +48,20 @@ def find_equilibrium_NTU(n, delta, rho, r, production_function, figName, distrib
         e = 1
         uPrev = uDensity
         while(e > tol):
-            uDensity = delta * lDensity / (delta + rho * np.dot(alphas, uPrev) / n)  # fixed point iteration
+            uDensity = delta * lDensity / \
+                (delta + rho * np.dot(alphas, uPrev) / n)  # fixed point iteration
             e = np.linalg.norm(uPrev - uDensity)
             uPrev = uDensity
 
         # Updating the values. Equation (2b)
-        values = (np.dot(alphas * payoffs, uDensity) ) / (n * psy + (np.dot(alphas, uDensity) ))
+        values = (np.dot(alphas * payoffs, uDensity)) / (n * psy + (np.dot(alphas, uDensity)))
 
         # Updating the matching set. Equation (3b)
-        newAlphas = np.zeros([n,n])
+        newAlphas = np.zeros([n, n])
         for i in range(n):
             for j in range(n):
-                if payoffs[i,j] >= values[i] and payoffs[j,i] >= values[j]:
-                    newAlphas[i,j] = 1
+                if payoffs[i, j] >= values[i] and payoffs[j, i] >= values[j]:
+                    newAlphas[i, j] = 1
         # Printing the number of changes in the matrix alphas after update
         print(n**2 - (newAlphas == alphas).sum())
 
@@ -81,13 +83,6 @@ def find_equilibrium_NTU(n, delta, rho, r, production_function, figName, distrib
         print("Infinite loop. Algorithm fails to converge.\n")
 
 
-
-
-
-
-
-
-
 def plot_matching_set(alphas, n, figName, distribution, contributions, lDensity):
     colorMatching = "Greens"
     X = np.linspace(1/n/2, 1-1/n/2, n)
@@ -97,7 +92,6 @@ def plot_matching_set(alphas, n, figName, distribution, contributions, lDensity)
     plt.rc('axes', labelsize=40)
     plt.rc('xtick', labelsize=30)
     plt.rc('ytick', labelsize=30)
-
 
     if distribution == "uniform":
         plt.contour(X, Y, alphas, levels, colors='k')
@@ -132,9 +126,9 @@ def plot_matching_set(alphas, n, figName, distribution, contributions, lDensity)
         axHistx.axis('off')
         axHisty.axis('off')
         axHistx.plot(contributions, lDensity, color='g')
-        axHistx.fill_between(contributions, 0, lDensity, color='g', alpha = 0.2)
+        axHistx.fill_between(contributions, 0, lDensity, color='g', alpha=0.2)
         axHisty.plot(lDensity, contributions, color='g')
-        axHisty.fill_between(lDensity, 0, contributions, color='g', alpha = 0.2)
+        axHisty.fill_between(lDensity, 0, contributions, color='g', alpha=0.2)
         axSet.set_xlim((0, 1))
         axSet.set_ylim((0, 1))
         axSet.set_xticks(np.arange(0, 1.1, 0.2))
@@ -146,11 +140,8 @@ def plot_matching_set(alphas, n, figName, distribution, contributions, lDensity)
         axSet.set_xlabel('x')
         axSet.set_ylabel('y')
 
-    plt.savefig("../figures/" + figName, bbox_inches='tight', pad_inches=0)
+    plt.savefig("./figures/" + figName, bbox_inches='tight', pad_inches=0)
     plt.close()
-
-
-
 
 
 if __name__ == '__main__':
@@ -159,7 +150,7 @@ if __name__ == '__main__':
     delta = 0.1
     rho = 30
     r = 0.3
-    production_function = lambda x,y : math.exp(x * y)
+    def production_function(x, y): return math.exp(x * y)
     # Here choose a name for the figure
     figName = "matching_set_NTU.pdf"
     find_equilibrium_NTU(n, delta, rho, r, production_function, figName, "normal", 0.5, 0.1)
