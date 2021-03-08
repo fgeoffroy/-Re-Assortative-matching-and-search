@@ -3,6 +3,8 @@ from run_TU import find_equilibrium_TU
 from run_NTU import find_equilibrium_NTU
 
 
+tol = 1e-12     # Absolute tolerance level for the fixed-point iteration
+
 # TRANSFERABLE UTILITY (TU)
 
 # FIGURE 1
@@ -16,12 +18,16 @@ def production_function(x, y): return x * y
 nList = [10, 50, 100, 500]
 for i in range(len(nList)):
     n = nList[i]
-    figName = "fig1_" + str(i+1) + ".pdf"
-    find_equilibrium_TU(n, delta, rho, r, production_function, figName)
+    fig_name = "fig1_" + str(i+1) + ".pdf"
+    find_equilibrium_TU(n, delta, rho, r, production_function, fig_name, tol)
+
+
 
 
 # From here, all the figures (except fig. 2B) are built with n = 500
 n = 500
+
+
 
 
 # FIGURE 2
@@ -33,20 +39,20 @@ r = 1
 def production_function(x, y): return (x + y - 1) ** 2
 
 
-figName = "fig2_1.pdf"
-find_equilibrium_TU(n, delta, rho, r, production_function, figName)
+fig_name = "fig2_1.pdf"
+find_equilibrium_TU(n, delta, rho, r, production_function, fig_name, tol)
 
 # FIGURE 2.2
 # Here we take n = 501 because the algorithme does not converge for n=500
-nFig2B = 501
+n_fig2B = 501
 delta = 1
 rho = 35
 r = 1
 def production_function(x, y): return (x + y) ** 2
 
 
-figName = "fig2_2.pdf"
-find_equilibrium_TU(nFig2B, delta, rho, r, production_function, figName)
+fig_name = "fig2_2.pdf"
+find_equilibrium_TU(n_fig2B, delta, rho, r, production_function, fig_name, tol)
 
 
 # FIGURE 2.3
@@ -56,8 +62,8 @@ r = 1
 def production_function(x, y): return x + y + x * y
 
 
-figName = "fig2_3.pdf"
-find_equilibrium_TU(n, delta, rho, r, production_function, figName)
+fig_name = "fig2_3.pdf"
+find_equilibrium_TU(n, delta, rho, r, production_function, fig_name, tol)
 
 
 # FIGURE 2.4
@@ -67,8 +73,10 @@ r = 1
 def production_function(x, y): return x + y + x * y
 
 
-figName = "fig2_4.pdf"
-find_equilibrium_TU(n, delta, rho, r, production_function, figName)
+fig_name = "fig2_4.pdf"
+find_equilibrium_TU(n, delta, rho, r, production_function, fig_name, tol)
+
+
 
 
 # NON-TRANSFERABLE UTILITY (NTU)
@@ -83,8 +91,8 @@ r = 0.3
 def production_function(x, y): return math.exp(x * y)
 
 
-figName = "fig3_1.pdf"
-find_equilibrium_NTU(n, delta, rho, r, production_function, figName)
+fig_name = "fig3_1.pdf"
+find_equilibrium_NTU(n, delta, rho, r, production_function, fig_name, tol)
 
 
 # FIGURE 3.2
@@ -94,8 +102,8 @@ r = 0.3
 def production_function(x, y): return math.exp(x * y)
 
 
-figName = "fig3_2.pdf"
-find_equilibrium_NTU(n, delta, rho, r, production_function, figName)
+fig_name = "fig3_2.pdf"
+find_equilibrium_NTU(n, delta, rho, r, production_function, fig_name, tol)
 
 
 # FIGURE 3.3
@@ -105,8 +113,21 @@ r = 0.3
 def production_function(x, y): return x + y + x * y
 
 
-figName = "fig3_3.pdf"
-find_equilibrium_NTU(n, delta, rho, r, production_function, figName)
+fig_name = "fig3_3.pdf"
+find_equilibrium_NTU(n, delta, rho, r, production_function, fig_name, tol)
+
+
+# FIGURE 3.4
+delta = 1.1
+rho = 3
+r = 0.3
+def production_function(x, y): return x + y + x * y
+
+
+fig_name = "fig3_4.pdf"
+find_equilibrium_NTU(n, delta, rho, r, production_function, fig_name, tol)
+
+
 
 
 # NORMAL DISTIBUTION OF TYPES
@@ -119,11 +140,11 @@ r = 1
 def production_function(x, y): return x * y
 
 
-muList = [0.2, 0.5, 0.8]
-sigmaList = [0.01, 0.1, 0.2]
+mu_list = [0.2, 0.5, 0.8]
+sigma_list = [0.01, 0.1, 0.2]
 i = 1
-for sigma in sigmaList:
-    for mu in muList:
-        figName = "fig4_" + str(i) + ".pdf"
-        find_equilibrium_TU(n, delta, rho, r, production_function, figName, "normal", mu, sigma)
+for sigma in sigma_list:
+    for mu in mu_list:
+        fig_name = "fig4_" + str(i) + ".pdf"
+        find_equilibrium_TU(n, delta, rho, r, production_function, fig_name, tol, "normal", mu, sigma)
         i += 1
