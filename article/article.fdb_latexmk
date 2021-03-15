@@ -1,11 +1,11 @@
 # Fdb version 3
-["biber article"] 1615196221 "article.bcf" "article.bbl" "article" 1615805997
+["biber article"] 1615196221 "article.bcf" "article.bbl" "article" 1615818352
   "article.bcf" 1615805997 91070 2cd83b34489f6358f89b9a4c9a818b13 ""
   "bibliography.bib" 1614071771 21789 f6d95626a38bbcb8266bc854e93f826d ""
   (generated)
   "article.bbl"
   "article.blg"
-["pdflatex"] 1615805994 "article.tex" "article.pdf" "article" 1615805997
+["pdflatex"] 1615805994 "article.tex" "article.pdf" "article" 1615818352
   "/etc/texmf/web2c/texmf.cnf" 1573662060 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1480098689 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -246,12 +246,12 @@
   "figures/fig4_8.pdf" 1614958628 31641 d59873fb11908e6243514951380c78b4 ""
   "figures/fig4_9.pdf" 1614958632 32304 f2da35f7c7d1a0699499e1bedbb52b68 ""
   "header.tex" 1614072172 4180 645d7e9f8f67154871a61b4ff0df2c0f ""
-  "metadata.tex" 1615805994 1853 50535f03662c8fa24944a9603863b651 ""
+  "metadata.tex" 1615818349 1853 50535f03662c8fa24944a9603863b651 ""
   "rescience.cls" 1615802219 11463 519efc3bdb96a3635048464ceadf989c ""
   (generated)
+  "article.log"
+  "article.out"
+  "article.aux"
+  "article.bcf"
   "article.pdf"
   "article.run.xml"
-  "article.out"
-  "article.bcf"
-  "article.log"
-  "article.aux"

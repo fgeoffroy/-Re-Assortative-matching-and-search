@@ -89,7 +89,7 @@ type: Replication
 domain: Game Theory
 
 # Coding language (main one only if several)
-language: Python
+language: Python 3
 
 
 # To be filled by the author(s) after acceptance
