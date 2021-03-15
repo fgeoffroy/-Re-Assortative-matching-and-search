@@ -39,8 +39,8 @@
 
 
 % --- Line numbering ----------------------------------------------------------
-\RequirePackage{lineno}		%Modification here
-\linenumbers				%Modification here
+%% \RequirePackage{lineno}		%Modification here
+%% \linenumbers				%Modification here
 
 
 % --- Footnotes ---------------------------------------------------------------

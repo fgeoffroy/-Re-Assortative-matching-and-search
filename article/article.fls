@@ -171,8 +171,6 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
-INPUT /usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
-INPUT /usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty

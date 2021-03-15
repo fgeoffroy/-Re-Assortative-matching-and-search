@@ -55,7 +55,7 @@ keywords: Search-and-matching, markets, biological markets, game theory, Python
 # Software Heritage.
 #   see https://guides.github.com/activities/citable-code/
 code:
-  - url: https://github.com/rescience-c/template
+  - url: https://github.com/fgeoffroy/-Re-Assortative-matching-and-search
   - doi:
   - swh:
 
@@ -89,7 +89,7 @@ type: Replication
 domain: Game Theory
 
 # Coding language (main one only if several)
-language:
+language: Python
 
 
 # To be filled by the author(s) after acceptance
@@ -97,24 +97,24 @@ language:
 
 # For example, the URL of the GitHub issue where review actually occured
 review:
-  - url:
+  - url: https://github.com/ReScience/submissions/issues/47
 
 contributors:
-  - name:
-    orcid:
+  - name: Nicolas P. Rougier
+    orcid: 0000-0002-6972-589X
     role: editor
-  - name:
-    orcid:
+  - name:  Dirk Eddelbuettel
+    orcid: 0000-0001-6419-907X
     role: reviewer
-  - name:
-    orcid:
+  - name:  Aurélien Nioche
+    orcid: 0000-0002-0567-2637
     role: reviewer
 
 # This information will be provided by the editor
 dates:
-  - received:  February 2, 2021
-  - accepted:
-  - published:
+  - received: February 2, 2021
+  - accepted: March 15, 2021
+  - published: March 15, 2021
 
 # This information will be provided by the editor
 article:
