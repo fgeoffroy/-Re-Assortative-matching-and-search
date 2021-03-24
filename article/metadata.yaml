@@ -57,7 +57,7 @@ keywords: Search-and-matching, markets, biological markets, game theory, Python
 code:
   - url: https://github.com/fgeoffroy/-Re-Assortative-matching-and-search
   - doi:
-  - swh:
+  - swh: swh:1:dir:c4b7d774ab458f90c433e321ab969d3f12e410de
 
 # Data URL and DOI (optional if no data)
 data:
@@ -114,17 +114,17 @@ contributors:
 dates:
   - received: February 2, 2021
   - accepted: March 15, 2021
-  - published: March 15, 2021
+  - published: March 24, 2021
 
 # This information will be provided by the editor
 article:
-  - number: # Article number will be automatically assigned during publication
-  - doi:    # DOI from Zenodo
-  - url:    # Final PDF URL (Zenodo or rescience website?)
+  - number: 2 # Article number will be automatically assigned during publication
+  - doi: 10.5072/zenodo.753083    # DOI from Zenodo
+  - url: http://dx.doi.org/10.5072/zenodo.753083    # Final PDF URL (Zenodo or rescience website?)
 
 # This information will be provided by the editor
 journal:
   - name:   "ReScience C"
   - issn:   2430-3658
-  - volume: 4
+  - volume: 7
   - issue:  1
