@@ -71,11 +71,16 @@
       The authors have declared that no competing interests exists.
 
       \ifdefempty{\codeURL}{}
+<<<<<<< HEAD
       %\begin{flushleft}
       Code is available at
       \href{\codeURL}{\detokenize\expandafter{\codeURL}}\ifdefempty{\codeDOI}{}{ -- DOI \doi{\codeDOI}.}\ifdefempty{\codeSWH}{.}{ -- \\ SWH \href{https://archive.softwareheritage.org/\codeSWH/}{\detokenize\expandafter{\codeSWH}}.}
       %\href{https://archive.softwareheritage.org/\codeSWH/}{\detokenize\expandafter{\codeSWH}}
       %\end{flushleft}
+=======
+      {Code is available at
+      \href{\codeURL}{\detokenize\expandafter{\codeURL}}\ifdefempty{\codeDOI}{.}{ -- DOI \doi{\codeDOI}.}\ifdefempty{\codeSWH}{.}{ -- \\ SWH  \href{https://archive.softwareheritage.org/\codeSWH/}{\detokenize\expandafter{\codeSWH}}.}}
+>>>>>>> 474b02a3041a8f3982c7841f1a4520c1340a0a07
 
       \ifdefempty{\dataURL}{}
       {Data is available at
